@@ -1,16 +1,26 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// Lista de projetos
+Route::get('/', 'ProjectsController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/projects', 'ProjectsController@index');
+
+
+// Tela de criação e envio POST
+Route::get('/projects/create', 'ProjectsController@create');
+
+Route::post('/projects/create', 'ProjectsController@store');
+
+
+// Mostrando um único projeto
+Route::get('/projects/{id}', 'ProjectsController@show');
+
+
+// Formulário de edição e envio PUT
+Route::get('/projects/{id}/edit', 'ProjectsController@edit');
+
+Route::put('/projects/{id}/edit', 'ProjectsController@update');
+
+
+// Apagando projeto com DELETE
+Route::delete('/projects/{id}/destroy', 'ProjectsController@delete');
